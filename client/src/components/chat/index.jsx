@@ -1,4 +1,4 @@
-import React from 'react'
+import { MultiChatSocket, useMultiChatLogic, MultiChatWindow } from "react-chat-engine-advanced"
 
 const Chat = () => {
   return (
