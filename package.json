@@ -11,6 +11,8 @@
   "dependencies": {
     "@heroicons/react": "^2.0.16",
     "@reduxjs/toolkit": "^1.9.3",
+    "eslint": "^8.36.0",
+    "eslint-config-react-app": "^7.0.1",
     "react": "^18.2.0",
     "react-chat-engine-advanced": "^0.1.28",
     "react-dom": "^18.2.0",
