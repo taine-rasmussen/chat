@@ -11,7 +11,7 @@ const Chat = () => {
 
 
   return (
-    <div>
+    <div style={{ flexBasis: '100%' }}>
       Cjat os wprlom
     </div>
   )
