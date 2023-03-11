@@ -12,15 +12,25 @@ const StandardMessageForm = ({ props, activeChat }) => {
     setMessage(e.target.value)
   }
 
+  console.log(activeChat)
+
   const handleSubmit = async () => {
-    const date = new Data().toISOString().replace('T', " ").replace('Z', `${Math.floor(Math.random() * 1000)} +00:00`)
-    const attach = attachment ? [{ blob: attachment, file: attachment.name }] : []
+    const date = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+    const at = attachment ? [{ blob: attachment, file: attachment.name }] : [];
     const form = {
-      attachments: attach,
-      create: date,
+      attachments: at,
+      created: date,
       sender_username: props.username,
-      text: message
-    }
+      text: message,
+      activeChatId: activeChat.id,
+    };
+
+    props.onSubmit(form);
+    setMessage('');
+    setAttachment('');
   }
 
 
@@ -77,7 +87,7 @@ const StandardMessageForm = ({ props, activeChat }) => {
           <PaperAirplaneIcon
             className='message-form-icon-airplane'
             onClick={() => {
-              setMessage('')
+              setPreview('')
               handleSubmit()
             }}
           />
