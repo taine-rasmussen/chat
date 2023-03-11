@@ -17,7 +17,7 @@ const Chat = () => {
         renderChatHeader={(chat) => <Header chat={chat} />}
         renderMessageForm={(props) => {
           return (
-            <StandardMessageFrom props={props} activeChat={chatProps.chat} />
+            <StandardMessageForm props={props} activeChat={chatProps.chat} />
           )
         }}
       />

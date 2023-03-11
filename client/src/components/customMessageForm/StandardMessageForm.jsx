@@ -3,7 +3,7 @@ import React from 'react'
 const StandardMessageForm = () => {
   return (
     <div>
-
+      StandardMessageForm
     </div>
   )
 }
