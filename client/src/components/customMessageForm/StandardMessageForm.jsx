@@ -3,7 +3,7 @@ import { PaperAirplaneIcon, PaperClipIcon, XMarkIcon } from '@heroicons/react/24
 import Dropzone from "react-dropzone";
 // import MessageFormUI from "./MessageFormUI";
 
-const StandardMessageForm = () => {
+const StandardMessageForm = ({ props, activeChat }) => {
   const [message, setMessage] = useState('');
   const [attachment, setAttachment] = useState('');
   const [preview, setPreview] = useState('')
@@ -12,8 +12,8 @@ const StandardMessageForm = () => {
     setMessage(e.target.value)
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = async () => {
+    const date = new Data().toISOString().replace('T', " ").replace('Z', `${Math.floor(Math.random() * 1000)} +00:00`)
   }
 
 
@@ -51,7 +51,7 @@ const StandardMessageForm = () => {
             multiple={false}
             noClick={true}
             onDrop={(acceptedFiles) => {
-              console.log(acceptedFiles)
+              // console.log(acceptedFiles)
               setAttachment(acceptedFiles[0])
               setPreview(URL.createObjectURL(acceptedFiles[0]))
             }}
