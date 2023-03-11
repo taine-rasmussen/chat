@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PaperClipIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import { PaperAirplaneIcon, PaperClipIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import Dropzone from "react-dropzone";
 // import MessageFormUI from "./MessageFormUI";
 
@@ -10,6 +10,10 @@ const StandardMessageForm = () => {
 
   const handleChange = (e) => {
     setMessage(e.target.value)
+  }
+
+  const handleSubmit = () => {
+
   }
 
 
@@ -62,6 +66,14 @@ const StandardMessageForm = () => {
               </div>
             )}
           </Dropzone>
+          <hr className='vertical-line' />
+          <PaperAirplaneIcon
+            className='message-form-icon-airplane'
+            onClick={() => {
+              setMessage('')
+              handleSubmit()
+            }}
+          />
         </div>
       </div>
     </div>
