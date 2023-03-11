@@ -14,6 +14,13 @@ const StandardMessageForm = ({ props, activeChat }) => {
 
   const handleSubmit = async () => {
     const date = new Data().toISOString().replace('T', " ").replace('Z', `${Math.floor(Math.random() * 1000)} +00:00`)
+    const attach = attachment ? [{ blob: attachment, file: attachment.name }] : []
+    const form = {
+      attachments: attach,
+      create: date,
+      sender_username: props.username,
+      text: message
+    }
   }
 
 
