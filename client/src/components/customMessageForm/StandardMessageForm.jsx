@@ -3,7 +3,7 @@ import { PaperAirplaneIcon, PaperClipIcon, XMarkIcon } from '@heroicons/react/24
 import Dropzone from "react-dropzone";
 // import MessageFormUI from "./MessageFormUI";
 
-const StandardMessageForm = () => {
+const StandardMessageForm = ({ props, activeChat }) => {
   const [message, setMessage] = useState('');
   const [attachment, setAttachment] = useState('');
   const [preview, setPreview] = useState('')
@@ -12,8 +12,25 @@ const StandardMessageForm = () => {
     setMessage(e.target.value)
   }
 
-  const handleSubmit = () => {
+  console.log(activeChat)
 
+  const handleSubmit = async () => {
+    const date = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+    const at = attachment ? [{ blob: attachment, file: attachment.name }] : [];
+    const form = {
+      attachments: at,
+      created: date,
+      sender_username: props.username,
+      text: message,
+      activeChatId: activeChat.id,
+    };
+
+    props.onSubmit(form);
+    setMessage('');
+    setAttachment('');
   }
 
 
@@ -51,7 +68,7 @@ const StandardMessageForm = () => {
             multiple={false}
             noClick={true}
             onDrop={(acceptedFiles) => {
-              console.log(acceptedFiles)
+              // console.log(acceptedFiles)
               setAttachment(acceptedFiles[0])
               setPreview(URL.createObjectURL(acceptedFiles[0]))
             }}
@@ -70,7 +87,7 @@ const StandardMessageForm = () => {
           <PaperAirplaneIcon
             className='message-form-icon-airplane'
             onClick={() => {
-              setMessage('')
+              setPreview('')
               handleSubmit()
             }}
           />
