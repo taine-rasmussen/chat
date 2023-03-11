@@ -12,7 +12,12 @@ const Chat = () => {
 
   return (
     <div style={{ flexBasis: '100%' }}>
-      Cjat os wprlom
+      <MultiChatSocket {...chatProps} />
+      <MultiChatWindow
+        {...chatProps}
+        style={{ height: '100vh' }}
+        renderChatHeader={(chat) => <Header chat={chat} />}
+      />
     </div>
   )
 }
