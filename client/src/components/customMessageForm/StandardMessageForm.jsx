@@ -32,7 +32,7 @@ const StandardMessageForm = () => {
         </div>
       )}
       <div className='message-form'>
-        <div className='message-form-input'>
+        <div className='message-form-input-container'>
           <input
             className='message-form-input'
             type='text'
