@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { XMarkIcon } from '@heroicons/react/24/solid';
+import Dropzone from "react-dropzone";
 // import MessageFormUI from "./MessageFormUI";
 
 const StandardMessageForm = () => {
@@ -39,6 +40,17 @@ const StandardMessageForm = () => {
             value={message}
             onChange={handleChange}
             placeholder='Send a message...'
+          />
+        </div>
+        <div className='message-form-icons'>
+          <Dropzone
+            acceptFiles='.jpg .jpeg .png'
+            multiple={false}
+            noClick={true}
+            onDrop={(acceptedFiles) => {
+              setAttachment(acceptedFiles[0])
+              setPreview(URL.createObjectURL(acceptedFiles))
+            }}
           />
         </div>
       </div>
