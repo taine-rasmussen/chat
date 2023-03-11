@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { PaperClipIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import Dropzone from "react-dropzone";
 // import MessageFormUI from "./MessageFormUI";
 
@@ -55,6 +55,10 @@ const StandardMessageForm = () => {
             {({ getRootProps, getInputProps, open }) => (
               <div {...getRootProps()}>
                 <input {...getInputProps()} />
+                <PaperClipIcon
+                  className='message-form-icon-clip'
+                  onClick={open}
+                />
               </div>
             )}
           </Dropzone>
