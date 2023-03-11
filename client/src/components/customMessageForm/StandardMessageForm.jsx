@@ -9,7 +9,6 @@ const StandardMessageForm = () => {
   const [preview, setPreview] = useState('')
 
   const handleChange = (e) => {
-    console.log(e.target.value)
     setMessage(e.target.value)
   }
 
@@ -48,8 +47,9 @@ const StandardMessageForm = () => {
             multiple={false}
             noClick={true}
             onDrop={(acceptedFiles) => {
+              console.log(acceptedFiles)
               setAttachment(acceptedFiles[0])
-              setPreview(URL.createObjectURL(acceptedFiles))
+              setPreview(URL.createObjectURL(acceptedFiles[0]))
             }}
           >
             {({ getRootProps, getInputProps, open }) => (
