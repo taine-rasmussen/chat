@@ -2,7 +2,7 @@ import MessageFormUI from "./MessageFormUI";
 import { useState } from 'react'
 
 
-const Ai = () => {
+const Ai = ({ props, activeChat }) => {
 
   const [message, setMessage] = useState('');
   const [attachment, setAttachment] = useState('');
@@ -11,7 +11,6 @@ const Ai = () => {
     setMessage(e.target.value)
   }
 
-  console.log(activeChat)
 
   const handleSubmit = async ({ props, activeChat }) => {
     const date = new Date()
