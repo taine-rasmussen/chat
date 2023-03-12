@@ -1,24 +1,19 @@
+import { usePostAiTextMutation } from "@/state/api";
+import React, { useState } from "react";
 import MessageFormUI from "./MessageFormUI";
-import { useState } from 'react'
-import { usePostAiTextMutation } from "@state/api";
-
 
 const Ai = ({ props, activeChat }) => {
-
-  const [message, setMessage] = useState('');
-  const [attachment, setAttachment] = useState('');
+  const [message, setMessage] = useState("");
+  const [attachment, setAttachment] = useState("");
   const [trigger] = usePostAiTextMutation();
 
-  const handleChange = (e) => {
-    setMessage(e.target.value)
-  }
+  const handleChange = (e) => setMessage(e.target.value);
 
-
-  const handleSubmit = async ({ props, activeChat }) => {
+  const handleSubmit = async () => {
     const date = new Date()
       .toISOString()
-      .replace('T', ' ')
-      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+      .replace("T", " ")
+      .replace("Z", `${Math.floor(Math.random() * 1000)}+00:00`);
     const at = attachment ? [{ blob: attachment, file: attachment.name }] : [];
     const form = {
       attachments: at,
@@ -30,19 +25,18 @@ const Ai = ({ props, activeChat }) => {
 
     props.onSubmit(form);
     trigger(form);
-    setMessage('');
-    setAttachment('');
-  }
-
+    setMessage("");
+    setAttachment("");
+  };
 
   return (
     <MessageFormUI
       setAttachment={setAttachment}
-      handleSubmit={handleSubmit}
-      handleChange={handleChange}
       message={message}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
     />
-  )
-}
+  );
+};
 
-export default Ai
+export default Ai;
