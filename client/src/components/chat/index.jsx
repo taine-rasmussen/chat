@@ -23,7 +23,8 @@ const Chat = () => {
           }
 
           return (
-            <StandardMessageForm props={props} activeChat={chatProps.chat} />
+            // <StandardMessageForm props={props} activeChat={chatProps.chat} />
+            's'
           )
         }}
       />

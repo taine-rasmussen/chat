@@ -9,8 +9,6 @@ const StandardMessageForm = ({ props, activeChat }) => {
     setMessage(e.target.value)
   }
 
-  console.log(activeChat)
-
   const handleSubmit = async () => {
     const date = new Date()
       .toISOString()
@@ -29,7 +27,6 @@ const StandardMessageForm = ({ props, activeChat }) => {
     setMessage('');
     setAttachment('');
   }
-
 
   return (
     <MessageFormUI
