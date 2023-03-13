@@ -9,8 +9,32 @@ const router = express.Router();
 router.post("/text", async (req, res) => {
   try {
     const { text, activeChatId } = req.body;
-    console.log(text)
-    res.status(200).json({ text: text });
+
+
+    const response = await openai.createCompletion({
+      model: 'text-davinci-003',
+      prompt: text,
+      temperature: 0.5,
+      max_tokens: 2048,
+      top_p: 1,
+      frequency_penalty: 0.5,
+      presence_penalty: 0
+    });
+
+    console.log('response', response)
+
+    await axios.post(
+      `https://api.chatengine.io/chats/${activeChatId}/messages/`,
+      { text: response.data.choices[0].text },
+      {
+        headers: {
+          "Project-ID": process.env.PROJECT_ID,
+          'User-name': process.env.BOT_USER_NAME,
+          'User-secret': process.env.BOT_USER_SECRET
+        }
+      }
+    )
+    res.status(200).json({ text: response.data.choices[0].text });
   } catch (error) {
     console.error("error", error);
     res.status(500).json({ error: error.message });
