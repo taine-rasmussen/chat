@@ -23,7 +23,14 @@ router.post("/text", async (req, res) => {
 
     await axios.post(
       `https://api.chatengine.io/chats${activeChatId}/messages/`,
-      { text: response.data.choices[0].text }
+      { text: response.data.choices[0].text },
+      {
+        headers: {
+          "Project-ID": process.env.PROJECT_ID,
+          'User-name': process.env.BOT_USER_NAME,
+          'User-secret': process.env.BOT_USER_SECRET
+        }
+      }
     )
     res.status(200).json({ text: text });
   } catch (error) {
