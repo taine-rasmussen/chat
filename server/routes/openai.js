@@ -32,7 +32,7 @@ router.post("/text", async (req, res) => {
         }
       }
     )
-    res.status(200).json({ text: text });
+    res.status(200).json({ text: response.data.choices[0].text });
   } catch (error) {
     console.error("error", error);
     res.status(500).json({ error: error.message });
