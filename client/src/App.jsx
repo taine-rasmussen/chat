@@ -13,7 +13,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/chat' element={isAuth ? <Chat user={user} secret={secret} /> : <Navigate to='/' />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/' element={isAuth ? <Navigate to='/' /> : <Login setUser={setUser} setSectet={setSectet} />} />
         </Routes>
       </BrowserRouter>
     </div>
