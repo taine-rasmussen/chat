@@ -4,10 +4,15 @@ import Chat from '@/components/chat';
 
 const App = () => {
 
+  const [user, setUser] = useState(null);
+  const [secret, setSectet] = useState(null)
+  const isAuth = Boolean(user) && Boolean(secret);
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path='/chat' element={isAuth ? <Chat user={user} secret={secret} /> : <Navigate to='/' />} />
           <Route path='/chat' element={<Chat />} />
         </Routes>
       </BrowserRouter>
