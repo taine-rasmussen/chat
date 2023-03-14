@@ -31,6 +31,6 @@ export const api = createApi({
 
 export const {
   usePostAiTextMutation,
-  postSignUp,
-  postLogin
+  usePostSignUpMutation,
+  usePostLoginMutation
 } = api
