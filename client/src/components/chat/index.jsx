@@ -3,11 +3,11 @@ import Header from "@/components/customHeader";
 import StandardMessageForm from '@/components/customMessageForm/StandardMessageForm'
 import Ai from "@/components/customMessageForm/Ai";
 
-const Chat = () => {
+const Chat = ({ user, secret }) => {
   const chatProps = useMultiChatLogic(
     import.meta.env.VITE_PROJECT_ID,
-    'koiosreet',
-    '1234'
+    user,
+    secret
   );
   return (
     <div style={{ flexBasis: '100%' }}>
