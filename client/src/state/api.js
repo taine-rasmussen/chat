@@ -10,11 +10,27 @@ export const api = createApi({
         url: 'openai/text',
         method: 'POST',
         body: payload
-      })
-    })
+      }),
+    }),
+    postLogin: build.mutation({
+      query: (payload) => ({
+        url: 'auth/login',
+        method: 'POST',
+        body: payload
+      }),
+    }),
+    postSignUp: build.mutation({
+      query: (payload) => ({
+        url: 'auth/signup',
+        method: 'POST',
+        body: payload
+      }),
+    }),
   })
 });
 
 export const {
-  usePostAiTextMutation
+  usePostAiTextMutation,
+  postSignUp,
+  postLogin
 } = api
