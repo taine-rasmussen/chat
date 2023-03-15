@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { usePostSignUpMutation, usePostLoginMutation } from '@/state/api'
 
-const Login = () => {
+const Login = ({ setUser, setSecret }) => {
 
   const [isRegister, setIsRegister] = useState(false);
   const [username, setUsername] = useState('');
@@ -20,8 +20,8 @@ const Login = () => {
   useEffect(
     () => {
       if (resultLogin.data?.response) {
-        setUsername(username)
-        setPassword(password)
+        setUser(username)
+        setSecret(password)
       }
     }, [response.data]
   )
