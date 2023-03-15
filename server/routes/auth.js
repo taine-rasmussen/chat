@@ -14,12 +14,15 @@ router.post("/signup", async (req, res) => {
       {
         username: username,
         secret: password
+      },
+      {
+        headers: { 'Private-Key': process.env.PRIVATE_KEY }
       }
     )
 
-    res.status(200).json({ text: response.data.choices[0].text });
+    res.status(200).json({ resposne: chatEngineResponse.data });
   } catch (error) {
-    console.error("error", error);
+    console.error("error", error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -28,9 +31,12 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
 
+    const { username, password } = req.body;
+
+
     res.status(200).json({ text: response.data.choices[0].text });
   } catch (error) {
-    console.error("error", error);
+    console.error("error", error.message);
     res.status(500).json({ error: error.message });
   }
 });
