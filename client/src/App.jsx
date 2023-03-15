@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { BrowserRouter, Router, Route, Navigate, Routes } from 'react-router-dom';
 import Chat from '@/components/chat';
 import Login from '@/components/login'
@@ -6,8 +6,8 @@ import Login from '@/components/login'
 
 const App = () => {
 
-  const [user, setUser] = useState(null);
-  const [secret, setSecret] = useState(null);
+  const [user, setUser] = useState();
+  const [secret, setSecret] = useState();
   const isAuth = Boolean(user) && Boolean(secret);
 
   console.log(isAuth, user, secret)
