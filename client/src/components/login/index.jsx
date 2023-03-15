@@ -3,8 +3,8 @@ import { usePostLoginMutation, usePostSignUpMutation } from '@/state/api';
 
 const Login = ({ setUser, setSecret }) => {
   const [isRegister, setIsRegister] = useState(false);
-  const [username, setUsername] = useState(');
-  const [password, setPassword] = useState(');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [triggerLogin, resultLogin] = usePostLoginMutation();
   const [triggerSignUp] = usePostSignUpMutation();
 
