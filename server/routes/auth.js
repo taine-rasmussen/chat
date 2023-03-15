@@ -33,8 +33,18 @@ router.post("/login", async (req, res) => {
 
     const { username, password } = req.body;
 
+    const chatEngineResponse = await axios.get(
+      'https://api.chatengine.io/users/me',
+      {
+        headers: {
+          "Project-ID": process.env.PROJECT_ID,
+          'User-name': username,
+          'User-secret': password
+        }
+      }
+    )
 
-    res.status(200).json({ text: response.data.choices[0].text });
+    res.status(200).json({ resposne: chatEngineResponse.data });
   } catch (error) {
     console.error("error", error.message);
     res.status(500).json({ error: error.message });
