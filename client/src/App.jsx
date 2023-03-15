@@ -7,15 +7,35 @@ import Login from '@/components/login'
 const App = () => {
 
   const [user, setUser] = useState(null);
-  const [secret, setSectet] = useState(null)
+  const [secret, setSecret] = useState(null);
   const isAuth = Boolean(user) && Boolean(secret);
 
+  console.log(isAuth, user, secret)
+
   return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
         <Routes>
-          <Route path='/chat' element={isAuth ? <Chat user={user} secret={secret} /> : <Navigate to='/' />} />
-          <Route path='/' element={isAuth ? <Navigate to='/' /> : <Login setUser={setUser} setSectet={setSectet} />} />
+          <Route
+            path="/"
+            element={
+              isAuth ? (
+                <Navigate to="/chat" />
+              ) : (
+                <Login setUser={setUser} setSecret={setSecret} />
+              )
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              isAuth ? (
+                <Chat user={user} secret={secret} />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>
