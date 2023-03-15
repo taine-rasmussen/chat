@@ -27,7 +27,13 @@ const Login = () => {
   )
 
   return (
-    <div>
+    <div className='login-page'>
+      <div className='login-container'>
+        <h2 className='title'>ChatGPT App</h2>
+        <p className='register-change' onClick={() => setIsRegister(!isRegister)}>
+          {isRegister ? 'Already a user?' : 'Are you a new user?'}
+        </p>
+      </div>
       Login
     </div>
   )
