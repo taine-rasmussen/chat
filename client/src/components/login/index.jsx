@@ -6,7 +6,7 @@ const Login = ({ setUser, setSecret }) => {
   const [isRegister, setIsRegister] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [triggerLogin] = usePostLoginMutation();
+  const [triggerLogin, resultLogin] = usePostLoginMutation();
   const [triggerSignUp] = usePostSignUpMutation();
 
   const handleLogin = () => {
@@ -23,7 +23,7 @@ const Login = ({ setUser, setSecret }) => {
         setUser(username)
         setSecret(password)
       }
-    }, [response.data]
+    }, [resultLogin.data]
   )
 
   return (
