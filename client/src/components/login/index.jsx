@@ -17,6 +17,15 @@ const Login = () => {
     triggerSignUp({ username, password });
   };
 
+  useEffect(
+    () => {
+      if (resultLogin.data?.response) {
+        setUsername(username)
+        setPassword(password)
+      }
+    }, [response.data]
+  )
+
   return (
     <div>
       Login
