@@ -34,6 +34,13 @@ const Login = () => {
           {isRegister ? 'Already a user?' : 'Are you a new user?'}
         </p>
       </div>
+      <input
+        className='login-input'
+        type='text'
+        placeholder='Username'
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
       Login
     </div>
   )
