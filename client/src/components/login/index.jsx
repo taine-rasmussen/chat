@@ -8,13 +8,20 @@ const Login = ({ setUser, setSecret }) => {
   const [triggerLogin, resultLogin] = usePostLoginMutation();
   const [triggerSignUp] = usePostSignUpMutation();
 
+  const handleFormReset = () => {
+    setUsername('');
+    setPassword('');
+  };
+
   const handleLogin = () => {
     triggerLogin({ username, password });
   };
 
   const handleRegister = () => {
     triggerSignUp({ username, password });
+    handleFormReset();
   };
+
 
   useEffect(() => {
     if (resultLogin.data?.response) {
