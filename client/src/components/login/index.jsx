@@ -20,6 +20,7 @@ const Login = ({ setUser, setSecret }) => {
   const handleRegister = () => {
     triggerSignUp({ username, password });
     handleFormReset();
+    setIsRegister(!isRegister);
   };
 
 
